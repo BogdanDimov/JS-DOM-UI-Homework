@@ -19,7 +19,28 @@ Create a function that takes a selector and:
 */
 function solve() {
   return function (selector) {
-    
+    var element = $(selector);
+    if (!element.length) throw Error();
+
+    $(".button").each(function () {
+      $(this).html('hide');
+    });
+
+    element.click(function (ev) {
+      var clickedButton = $(ev.target);
+      var nextContent = clickedButton.next(".content");
+      var nextButton = nextContent.next(".button");
+
+      if (nextContent.length && nextButton.length) {
+        if (clickedButton.html() == 'hide') {
+          nextContent.css('display', 'none');
+          clickedButton.html('show');
+        } else {
+          nextContent.css('display', '');
+          clickedButton.html('hide');
+        }
+      }
+    });
   };
 };
 

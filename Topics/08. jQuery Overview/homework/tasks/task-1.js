@@ -21,7 +21,22 @@ Create a function that takes a selector and COUNT, then generates inside a UL wi
 
 function solve() {
   return function (selector, count) {
-   
+    if (!count ||
+      count < 0 ||
+      count === 0 ||
+      typeof count === 'object' ||
+      Array.isArray(count) ||
+      count === '' ||
+      isNaN(count) ||
+      !selector ||
+      Array.isArray(selector)) {
+      throw Error();
+    }
+
+    var list = $('<ul/>').addClass("items-list").appendTo(selector);
+    for (var i = 0; i < count; i += 1) {
+      list.append(`<li class="list-item">List item #${i}</li>`);
+    }
   };
 };
 
