@@ -28,17 +28,13 @@ function solve() {
 
     element.click(function (ev) {
       var clickedButton = $(ev.target);
-      var nextContent = clickedButton.next(".content");
-      var nextButton = nextContent.next(".button");
-
-      if (nextContent.length && nextButton.length) {
-        if (clickedButton.html() == 'hide') {
-          nextContent.css('display', 'none');
-          clickedButton.html('show');
-        } else {
-          nextContent.css('display', '');
-          clickedButton.html('hide');
-        }
+      var nextContent = clickedButton.nextAll(".content").first();
+      if (nextContent.css('display') === 'none') {
+        nextContent.css('display', '');
+        clickedButton.html('hide');
+      } else {
+        nextContent.css('display', 'none');
+        clickedButton.html('show');
       }
     });
   };
