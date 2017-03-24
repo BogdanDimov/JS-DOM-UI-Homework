@@ -30,9 +30,26 @@ describe('Task #3 Tests', function () {
       count = 5,
       id = 'students-table';
 
-    document.body.innerHTML = '<table><thead><tr><th>#</th><th>Name</th><th>Mark</th></tr></thead>' +
-    '<tbody id="' + id + '" data-template="students-row-template"></tbody></table>' +
-    '<script id="students-row-template" type="text/handlebars-template"><tr class="student-row"><td>{{number}}</td><td>{{name}}</td><td>{{mark}}</td></tr></script>';
+    document.body.innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Mark</th>
+        </tr>
+      </thead>
+      <tbody id="` + id + `" data-template="students-row-template">
+        
+      </tbody>
+    </table>
+    <script id="students-row-template" type="text/handlebars-template">
+      <tr class="student-row">
+        <td>{{number}}</td>
+        <td>{{name}}</td>
+        <td>{{mark}}</td>
+      </tr>
+    </script>`;
     result();
 
     for (var i = 0; i < count; i += 1) {
